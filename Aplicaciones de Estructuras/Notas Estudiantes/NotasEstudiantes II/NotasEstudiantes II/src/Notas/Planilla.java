@@ -33,7 +33,7 @@ public class Planilla
 	public void setTotalCalificaciones(Asignatura[] totalCalificaciones) {		this.totalCalificaciones = totalCalificaciones;	}
 	
 	//##%%<!--  Metodo Principal -------------------------------------------------------------------------------------------------------------
-	
+
 	
 	public void launch()
 	{
