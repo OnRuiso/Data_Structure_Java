@@ -1,0 +1,242 @@
+ALTER TABLE latabla ADD PRIMARY KEY ('id_delatabla')
+ALTER TABLE latabla ADD CONSTRAINT 'FK_padre_id_datopasdre' FOREIGN KEY ('fk_nombredelaforanea')
+
+
+
+
+administrador PK
+PRIMARY KEY (`id_administrador`)
+
+Tipo_producto PK
+PRIMARY KEY (`id_tipo_producto`)
+
+Tipo_producto FK
+CONSTRAINT `fk_Tipo_producto_administrador1`
+    FOREIGN KEY (`FK_id_administrador`)
+    REFERENCES `mydb`.`administrador` (`id_administrador`)
+
+precio_producto PK
+PRIMARY KEY (`id_precio_producto`)
+
+Producto PK
+PRIMARY KEY (`idProductos`)
+
+Producto FK
+CONSTRAINT `fk_Producto_Tipo_producto1`
+    FOREIGN KEY (`FK_id_tipo_producto`)
+    REFERENCES `mydb`.`Tipo_producto` (`id_tipo_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Producto_precio_producto1`
+    FOREIGN KEY (`FK_id_precio_producto`)
+    REFERENCES `mydb`.`precio_producto` (`id_precio_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Producto_administrador1`
+    FOREIGN KEY (`FK_id_administrador`)
+    REFERENCES `mydb`.`administrador` (`id_administrador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+Empresa_XYZ PK
+PRIMARY KEY (`idEmpresa_XYZ`)
+
+Empresa_XYZ FK
+CONSTRAINT `fk_Empresa_XYZ_administrador1`
+    FOREIGN KEY (`FK_id_administrador`)
+    REFERENCES `mydb`.`administrador` (`id_administrador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+Proveedor PK
+PRIMARY KEY (`idProveedor`)
+
+Proveedor FK
+CONSTRAINT `fk_Proveedor_Empresa_XYZ1`
+    FOREIGN KEY (`FK_idEmpresa_XYZ`)
+    REFERENCES `mydb`.`Empresa_XYZ` (`idEmpresa_XYZ`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+impuestos PK
+PRIMARY KEY (`idImpuestos`)
+
+precio_producto_has_impuestos PK
+PRIMARY KEY (`precio_producto_id_precio_producto`, `impuestos_idImpuestos`)
+
+precio_producto_has_impuestos FK
+CONSTRAINT `fk_precio_producto_has_impuestos_precio_producto1`
+    FOREIGN KEY (`precio_producto_id_precio_producto`)
+    REFERENCES `mydb`.`precio_producto` (`id_precio_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_precio_producto_has_impuestos_impuestos1`
+    FOREIGN KEY (`impuestos_idImpuestos`)
+    REFERENCES `mydb`.`impuestos` (`idImpuestos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+Identificador PK
+  PRIMARY KEY (`idIdentificador`)
+
+cliente PK
+PRIMARY KEY (`id_cliente`)
+
+cliente FK
+CONSTRAINT `fk_cliente_Identificador1`
+    FOREIGN KEY (`FK_id_identificador`)
+    REFERENCES `mydb`.`Identificador` (`idIdentificador`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliente_Empresa_XYZ1`
+    FOREIGN KEY (`FK_idEmpresa_XYZ`)
+    REFERENCES `mydb`.`Empresa_XYZ` (`idEmpresa_XYZ`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+
+cuenta_cliente PK
+PRIMARY KEY (`id_cuenta_cliente`)
+
+cuenta_cliente FK
+CONSTRAINT `fk_cuenta_cliente_cliente1`
+    FOREIGN KEY (`FK_id_cliente`)
+    REFERENCES `mydb`.`cliente` (`id_cliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+dia_de_venta PK
+PRIMARY KEY (`id_dia_de_venta`)
+
+recibo_de_pago PK
+PRIMARY KEY (`id_recibo_de_pago`)
+
+recibo_de_pago FK
+CONSTRAINT `fk_recibo_de_pago_cliente1`
+    FOREIGN KEY (`FK_id_cliente`)
+    REFERENCES `mydb`.`cliente` (`id_cliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_de_pago_cuenta_cliente1`
+    FOREIGN KEY (`FK_id_cuenta_cliente`)
+    REFERENCES `mydb`.`cuenta_cliente` (`id_cuenta_cliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_de_pago_dia_de_venta1`
+    FOREIGN KEY (`FK_id_dia_de_venta`)
+    REFERENCES `mydb`.`dia_de_venta` (`id_dia_de_venta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+recibo_de_pago_has_Producto PK
+PRIMARY KEY (`recibo_de_pago_id_recibo_de_pago`, `Producto_idProductos`)
+
+recibo_de_pago_has_Producto FK
+CONSTRAINT `fk_recibo_de_pago_has_Producto_recibo_de_pago1`
+    FOREIGN KEY (`recibo_de_pago_id_recibo_de_pago`)
+    REFERENCES `mydb`.`recibo_de_pago` (`id_recibo_de_pago`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_de_pago_has_Producto_Producto1`
+    FOREIGN KEY (`Producto_idProductos`)
+    REFERENCES `mydb`.`Producto` (`idProductos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+recibo_de_pago_has_precio_producto PK
+PRIMARY KEY (`FK_id_recibo_de_pago`, `FK_id_precio_producto`)
+
+recibo_de_pago_has_precio_producto FK
+CONSTRAINT `fk_recibo_de_pago_has_precio_producto_recibo_de_pago1`
+    FOREIGN KEY (`FK_id_recibo_de_pago`)
+    REFERENCES `mydb`.`recibo_de_pago` (`id_recibo_de_pago`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_recibo_de_pago_has_precio_producto_precio_producto1`
+    FOREIGN KEY (`FK_id_precio_producto`)
+    REFERENCES `mydb`.`precio_producto` (`id_precio_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+
+Proveedor_has_Producto PK
+PRIMARY KEY (`Proveedor_idProveedor`, `Producto_idProductos`)
+
+Proveedor_has_Producto FK
+CONSTRAINT `fk_Proveedor_has_Producto_Proveedor1`
+    FOREIGN KEY (`Proveedor_idProveedor`)
+    REFERENCES `mydb`.`Proveedor` (`idProveedor`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Proveedor_has_Producto_Producto1`
+    FOREIGN KEY (`Producto_idProductos`)
+    REFERENCES `mydb`.`Producto` (`idProductos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+ventas_productos PK
+  PRIMARY KEY (`id_ventas_productos`)
+
+ventas_productos FK
+CONSTRAINT `fk_ventas_productos_dia_de_venta1`
+    FOREIGN KEY (`FK_id_dia_de_venta`)
+    REFERENCES `mydb`.`dia_de_venta` (`id_dia_de_venta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ventas_productos_recibo_de_pago1`
+    FOREIGN KEY (`FK_id_recibo_de_pago`)
+    REFERENCES `mydb`.`recibo_de_pago` (`id_recibo_de_pago`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+
+cajero PK
+  PRIMARY KEY (`id_cajero`)
+
+cajero FK
+CONSTRAINT `fk_cajero_Empresa_XYZ1`
+    FOREIGN KEY (`FK_idEmpresa_XYZ`)
+    REFERENCES `mydb`.`Empresa_XYZ` (`idEmpresa_XYZ`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+cajero_has_recibo_de_pago PK
+PRIMARY KEY (`cajero_id_cajero`, `recibo_de_pago_id_recibo_de_pago`)
+
+cajero_has_recibo_de_pago FK
+CONSTRAINT `fk_cajero_has_recibo_de_pago_cajero1`
+    FOREIGN KEY (`cajero_id_cajero`)
+    REFERENCES `mydb`.`cajero` (`id_cajero`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cajero_has_recibo_de_pago_recibo_de_pago1`
+    FOREIGN KEY (`recibo_de_pago_id_recibo_de_pago`)
+    REFERENCES `mydb`.`recibo_de_pago` (`id_recibo_de_pago`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+Producto_has_cajero PK
+PRIMARY KEY (`Producto_idProductos`, `cajero_id_cajero`)
+
+Producto_has_cajero FK
+CONSTRAINT `fk_Producto_has_cajero_Producto1`
+    FOREIGN KEY (`Producto_idProductos`)
+    REFERENCES `mydb`.`Producto` (`idProductos`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Producto_has_cajero_cajero1`
+    FOREIGN KEY (`cajero_id_cajero`)
+    REFERENCES `mydb`.`cajero` (`id_cajero`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,212 @@
+-- -----------------------------------------------------
+-- Table `mydb`.`administrador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`administrador` (
+  `id_administrador` INT NOT NULL,
+  `adicionar_producto` INT NOT NULL,
+  `adicionar_tipo_producto` INT NOT NULL,
+  `autorizar_devolucion` TINYINT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Tipo_producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Tipo_producto` (
+  `id_tipo_producto` INT NOT NULL,
+  `lacteo` TINYINT NOT NULL,
+  `pescado` TINYINT NOT NULL,
+  `mar` TINYINT NOT NULL,
+  `aseo` TINYINT NOT NULL,
+  `FK_id_administrador` INT NOT NULL
+   );
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`precio_producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`precio_producto` (
+  `id_precio_producto` INT NOT NULL,
+  `precio_de_venta` DECIMAL(13,2) NOT NULL,
+  `precio_de_compra` DECIMAL(13,2) NOT NULL,
+  `fecha_adquisicion` DATE NOT NULL,
+  `precio_actualizado_usuario` VARCHAR(45) NOT NULL,
+  `precio_actualizado_fecha` DATE NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Producto` (
+  `idProductos` INT NOT NULL,
+  `nombre_producto` VARCHAR(45) NOT NULL,
+  `cantidad_producto_bodega` INT NOT NULL,
+  `codigo_de_barras` VARCHAR(45) NOT NULL,
+  `FK_id_tipo_producto` INT NOT NULL,
+  `FK_id_precio_producto` INT NOT NULL,
+  `FK_id_administrador` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Empresa_XYZ`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Empresa_XYZ` (
+  `idEmpresa_XYZ` INT NOT NULL,
+  `clientes` INT NULL,
+  `proveedores` INT NULL,
+  `cajeros` INT NULL,
+  `administrador` INT NULL,
+  `FK_id_administrador` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Proveedor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Proveedor` (
+  `idProveedor` INT NOT NULL,
+  `nombre_proveedor` VARCHAR(45) NOT NULL,
+  `direccion_proveedor` VARCHAR(45) NOT NULL,
+  `telefono_proveedor` INT NOT NULL,
+  `url_proveedor` VARCHAR(45) NOT NULL,
+  `stock_minimo_producto` INT NOT NULL,
+  `nit_proveedor` VARCHAR(45) NOT NULL,
+  `FK_idEmpresa_XYZ` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`impuestos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`impuestos` (
+  `idImpuestos` INT NOT NULL,
+  `nombre_impuesto` VARCHAR(45) NOT NULL,
+  `valor_impuesto` DECIMAL(5,2) NOT NULL,
+  `fecha_impuesto` DATE NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`precio_producto_has_impuestos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`precio_producto_has_impuestos` (
+  `precio_producto_id_precio_producto` INT NOT NULL,
+  `impuestos_idImpuestos` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Identificador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Identificador` (
+  `idIdentificador` INT NOT NULL,
+  `CC` TINYINT NOT NULL,
+  `TI` TINYINT NOT NULL,
+  `RC` TINYINT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cliente` (
+  `id_cliente` INT NOT NULL,
+  `nombre_cliente` VARCHAR(45) NOT NULL,
+  `direccion_cliente` VARCHAR(45) NOT NULL,
+  `telefono_cliente` VARCHAR(45) NOT NULL,
+  `codigo_cliente` VARCHAR(45) NOT NULL,
+  `FK_id_identificador` INT NOT NULL,
+  `FK_idEmpresa_XYZ` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cuenta_cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cuenta_cliente` (
+  `id_cuenta_cliente` INT NOT NULL,
+  `saldo_pendiente` DECIMAL(13,2) NOT NULL,
+  `FK_id_cliente` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`dia_de_venta`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`dia_de_venta` (
+  `id_dia_de_venta` INT NOT NULL,
+  `fecha_venta` VARCHAR(45) NOT NULL
+   );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`recibo_de_pago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`recibo_de_pago` (
+  `id_recibo_de_pago` INT NOT NULL,
+  `cantidad_producto` INT NOT NULL,
+  `FK_id_cliente` INT NOT NULL,
+  `valor_total_compra` DECIMAL(13,2) NOT NULL,
+  `total_pago_base_impuestos` DECIMAL(13,2) NOT NULL,
+  `totalidad_del_pago` TINYINT NOT NULL,
+  `FK_id_cuenta_cliente` INT NOT NULL,
+  `FK_id_dia_de_venta` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`recibo_de_pago_has_Producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`recibo_de_pago_has_Producto` (
+  `recibo_de_pago_id_recibo_de_pago` INT NOT NULL,
+  `Producto_idProductos` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`recibo_de_pago_has_precio_producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`recibo_de_pago_has_precio_producto` (
+  `FK_id_recibo_de_pago` INT NOT NULL,
+  `FK_id_precio_producto` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Proveedor_has_Producto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Proveedor_has_Producto` (
+  `Proveedor_idProveedor` INT NOT NULL,
+  `Producto_idProductos` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`ventas_productos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`ventas_productos` (
+  `id_ventas_productos` INT NOT NULL,
+  `FK_id_dia_de_venta` INT NOT NULL,
+  `FK_id_recibo_de_pago` INT NOT NULL,
+  `total_ventas` DECIMAL(13,2) NOT NULL,
+  `fecha_inicio` DATE NOT NULL,
+  `fecha_fin` DATE NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cajero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cajero` (
+  `id_cajero` INT NOT NULL,
+  `devolver_producto` VARCHAR(45) NOT NULL,
+  `vender_producto` VARCHAR(45) NOT NULL,
+  `FK_idEmpresa_XYZ` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`cajero_has_recibo_de_pago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`cajero_has_recibo_de_pago` (
+  `cajero_id_cajero` INT NOT NULL,
+  `recibo_de_pago_id_recibo_de_pago` INT NOT NULL
+  );
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Producto_has_cajero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Producto_has_cajero` (
+  `Producto_idProductos` INT NOT NULL,
+  `cajero_id_cajero` INT NOT NULL
+  );
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

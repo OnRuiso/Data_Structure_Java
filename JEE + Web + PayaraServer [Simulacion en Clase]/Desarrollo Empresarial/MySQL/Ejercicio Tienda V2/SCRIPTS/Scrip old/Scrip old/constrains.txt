@@ -1,0 +1,84 @@
+------------producto_type PK-------------
+ALTER TABLE product_type ADD PRIMARY KEY (id_product_type)
+-----------------------------------------
+
+------product PK---------
+ALTER TABLE product ADD PRIMARY KEY (`id_product`)
+-------------------------
+
+-----------------------------------------------product FK--------------------------------------------
+ALTER TABLE product ADD CONSTRAINT FK_PRODUCT_ID_PRODUCT_TYPE FOREIGN KEY (fk_id_product_type)
+REFERENCES PRODUCT_TYPE (id_product_type)
+-----------------------------------------------------------------------------------------------------
+
+--------Price_product PK-------- 
+ALTER TABLE price_product ADD PRIMARY KEY (id_price_product)
+--------------------------------
+
+-----------------------------------------------Price_product FK-----------------------------------------
+ALTER TABLE price_product ADD CONSTRAINT FK_PRICE_ID_PRODUCT_PRODUCT FOREIGN KEY (fk_id_product)
+REFERENCES PRODUCT (id_product)
+---------------------------------------------------------------------------------------------------------
+
+-------tax PK--------
+ALTER TABLE tax ADD PRIMARY KEY (id_tax)
+---------------------
+
+-------detail_ticket PK---------
+ALTER TABLE detal_ticket ADD PRIMARY KEY (id_detail_ticket)
+--------------------------------
+
+------tax_price_product PK------
+ALTER TABLE tax_price_product ADD PRIMARY KEY (id_price_product)
+--------------------------------
+
+-----------------------------------------tax_price_product FK-----------------------------------------------------
+ALTER TABLE tax_price_product ADD CONSTRAINT FK_TAX_ID_PRICE_PRODUCT FOREIGN KEY (fk_id_price_product)
+REFERENCES PRICE_PRODUCT (id_price_product);
+ALTER TABLE tax_price_product ADD CONSTRAINT FK_TAX_PRICE_ID_PRODUCT_TAX FOREIGN KEY (fk_id_tax)
+REFERENCES TAX (id_tax);
+ALTER TABLE tax_price_product ADD CONSTRAINT FK_TAX_PRICE_ID_PRODUCT_DETAIL_TICKET FOREIGN KEY (fk_id_detail_ticket)
+REFERENCES DETAIL_TICKET (id_detail_ticket);
+--------------------------------------------------------------------------------------------------------------------
+
+------provider PK---------
+ALTER TABLE provider ADD PRIMARY KEY (id_provider)
+---------------------------
+
+-------provider_product PK--------
+ALTER TABLE provider_product ADD PRIMARY KEY (id_provider_product)
+-----------------------------------
+
+-------------------------------------------provider_product FK------------------------------------------------
+ALTER TABLE provider_product ADD CONSTRAINT FK_PROVIDER_ID_PRODUCT_POVIDER FOREIGN KEY (fk_id_provider)
+REFERENCES PROVIDER (id_provider);
+ALTER TABLE provider_product ADD CONSTRAINT FK_PROVIDER_ID_PRODUCT FOREIGN KEY (fk_id_product)
+REFERENCES PRODUCT (id_product);
+----------------------------------------------------------------------------------------------------------------
+
+--------person_type PK-------
+ALTER TABLE person_type ADD PRIMARY KEY (id_person_type)
+-----------------------------
+
+-------person PK--------
+ALTER TABLE person ADD PRIMARY KEY (id_person)
+-------------------------
+
+--------------------------------------------person FK---------------------------------------------
+ALTER TABLE person ADD CONSTRAINT FK_PERSON_ID_PERSON_TYPE FOREIGN KEY (fk_id_person_type)
+REFERENCES PERSON_TYPE (id_person_type);
+---------------------------------------------------------------------------------------------------
+-------ticket PK--------
+ALTER TABLE ticket ADD PRIMARY KEY (id_ticket)
+--------------------------
+
+--------------------------------------------ticket FK-------------------------------------------------
+ALTER TABLE ticket ADD CONSTRAINT FK_TICKET_ID_PERSON1 FOREIGN KEY (fk_id_person_customer)
+REFERENCES PERSON (id_person);
+ALTER TABLE ticket ADD CONSTRAINT FK_TICKET_ID_PERSON2 FOREIGN KEY (fk_id_person_cashier)
+REFERENCES PERSON (id_person);
+ALTER TABLE ticket ADD CONSTRAINT FK_TICKET_ID_DETAIL_TICKET FOREIGN KEY (fk_id_detail_ticket)
+REFERENCES DETAIL_TICKET (id_detail_ticket);
+-------------------------------------------------------------------------------------------------------
+
+
