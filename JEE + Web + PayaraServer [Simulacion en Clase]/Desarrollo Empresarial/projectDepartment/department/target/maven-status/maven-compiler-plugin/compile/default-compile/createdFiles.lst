@@ -1,0 +1,5 @@
+co\edu\usta\tunja\clases\ejb\Abstract.class
+co\edu\usta\tunja\clases\entity\DepartmentEntity.class
+co\edu\usta\tunja\clases\ejb\DepartmentFacade.class
+co\edu\usta\tunja\clases\utility\Messages.class
+co\edu\usta\tunja\clases\controller\DepartmentController.class

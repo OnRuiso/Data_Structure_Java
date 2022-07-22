@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+    </h:body>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Taller Desarrollo Empresarial</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="messages" sticky="true" />
+                    <p:breadCrumb>
+                        <p:menuitem value="Pagina de inicio" url="/department/" />
+                    </p:breadCrumb>
+                    
+                    <p:dataTable value="#{departmentController.departmentListado}" var="registros">
+                        <p:column style="width: 50%">
+                            <f:facet name="header">Codigo</f:facet>
+                            #{registros.idDepartment}
+                        </p:column>
+                        <p:column style="width: 50%">
+                            <f:facet name="header">Nombre</f:facet>
+                            #{registros.name}
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+</html>
+
