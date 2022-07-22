@@ -1,0 +1,23 @@
+______________________________________________________
+FACTURA CLIENTE : Ingeniera Mery
+______________________________________________________ 
+ 
+
+[1] Pan de Trigo...........................Cant:  12.....Unidad:  2000.....subTotal: 24000
+[2] Pan de Centeno.....................Cant:  0.....Unidad:  3000.....subTotal: 0
+[3] Pan Frances...........................Cant:  0.....Unidad:  4000.....subTotal: 0
+[4] Pan de Mantequilla...............Cant:  0.....Unidad:  8000.....subTotal: 0
+[5] Pan con Arequipe.................Cant:  56.....Unidad:  15000.....subTotal: 840000
+[6] Pan de Avena.........................Cant:  0.....Unidad:  4500.....subTotal: 0
+[7] Pan Integral y Derivativo.....Cant:  45.....Unidad:  2000.....subTotal: 90000
+[8] Pan de Mogollas...................Cant:  0.....Unidad:  3000.....subTotal: 0
+[9] Pan de Molde.........................Cant:  0.....Unidad:  2000.....subTotal: 0
+[10] Pan de Relleno....................Cant:  0.....Unidad:  10000.....subTotal: 0
+[11] Pan Vegano.........................Cant:  0.....Unidad:  5000.....subTotal: 0
+[12] Pan Blanco..........................Cant:  78.....Unidad:  1000.....subTotal: 78000
+
+ 
+ TOTAL DE PANES COMPRADOS: 191 TOTAL A PAGAR:  1032000
+______________________________________________________
+¡QUE TENGA UN BUEN DIA!
+______________________________________________________
