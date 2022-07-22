@@ -1,0 +1,15 @@
+-- select * from supermarket."public".product -- traer todo de una tabla
+-- select product_name from supermarket."public".product -- traer un atributo de una tabla
+-- INNER JOIN falta terminarlo
+
+-- select * from supermarket.'public'.tax
+
+--- BULK INSERT  FROM 'C:\Users\ruiso\Desktop\Nueva carpeta\table_tax.csv' WITH
+--- (
+---    FIRSTROW = 2, -- as 1st one is header
+---    FIELDTERMINATOR = ',',  --CSV field delimiter
+---    ROWTERMINATOR = '\n',   --Use to shift the control to next row
+---    TABLOCK
+---)
+---"""
+
