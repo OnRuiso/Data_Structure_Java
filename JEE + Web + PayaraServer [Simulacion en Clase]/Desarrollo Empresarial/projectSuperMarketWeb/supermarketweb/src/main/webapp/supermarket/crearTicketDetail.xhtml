@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Crear Ticket Detail</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="messages" sticky="true" />
+                    <p:breadCrumb>
+                        <p:menuitem value="Pagina de inicio" url="/supermarketwebX/"/>
+                    </p:breadCrumb> 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">Formulario de Creacion de Detalle de Ticket</f:facet>
+                        
+                        <p:outputLabel value="Amount" for="nom" />
+                        <p:inputText id="nom" required="true" requiredMessage="Amount es obligatorio" value="#{ticketDetailController.campo.amount}" />
+                        
+                        <p:outputLabel value="Respuesta de Devolucion" for="nom1" />
+                        <p:inputText id="nom1" required="false" value="#{ticketDetailController.campo.devolutionRequest}" />
+                        
+                        <p:outputLabel value="Aprovacion de Devolucion" for="nom2" />
+                        <p:inputText id="nom2" required="false" value="#{ticketDetailController.campo.devolutionApproved}" />
+                        
+                        <p:outputLabel value="Descripcion" for="nom3" />
+                        <p:inputText id="nom3" required="false" value="#{ticketDetailController.campo.descriptionDevolution}" />
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="btn" value="Crear Detalle del Tiquete" ajax="false" action="#{ticketDetailController.grabarTicketDetail()}" />
+                        </f:facet>
+                        
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+</html>

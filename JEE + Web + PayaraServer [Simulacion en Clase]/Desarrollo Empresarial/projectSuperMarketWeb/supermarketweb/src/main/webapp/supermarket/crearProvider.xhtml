@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Crear Provider</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="messages" sticky="true" />
+                    <p:breadCrumb>
+                        <p:menuitem value="Pagina de inicio" url="/supermarketwebX/"/>
+                    </p:breadCrumb> 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">Formulario de Creacion de Proveedores</f:facet>
+                        
+                        <p:outputLabel value="Nombre Proveedor" for="nom" />
+                        <p:inputText id="nom" required="true" requiredMessage="Nombre del departamento es obligatorio" value="#{providerController.campo.nameProvider}" />
+                        
+                        <p:outputLabel value="NIT" for="nom1" />
+                        <p:inputText id="nom1" required="true" requiredMessage="Nombre del departamento es obligatorio" value="#{providerController.campo.nit}" />
+                        
+                        <p:outputLabel value="URL" for="nom2" />
+                        <p:inputText id="nom2" required="true" requiredMessage="Nombre del departamento es obligatorio" value="#{providerController.campo.url}" />
+                        
+                        <p:outputLabel value="Direccion" for="nom3" />
+                        <p:inputText id="nom3" required="true" requiredMessage="Nombre del departamento es obligatorio" value="#{providerController.campo.address}" />
+                        
+                        <p:outputLabel value="Telefono" for="nom4" />
+                        <p:inputText id="nom4" required="true" requiredMessage="Nombre del departamento es obligatorio" value="#{providerController.campo.phoneNumber}" />
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="btn" value="Crear Proveedor" ajax="false" action="#{providerController.grabarProvider()}" />
+                        </f:facet>
+                        
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+</html>

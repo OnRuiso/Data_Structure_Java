@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:head>
+        <title>Crear PersonType</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="messages" sticky="true" />
+                    <p:breadCrumb>
+                        <p:menuitem value="Pagina de inicio" url="/supermarketwebX/"/>
+                    </p:breadCrumb> 
+                    <br/>
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">Formulario de Creacion de Tipos de Persona</f:facet>
+                        
+                        <p:outputLabel value="Nombre Tipo de persona" for="nom" />
+                        <p:inputText id="nom" required="true" requiredMessage="Nombre del tipo de Persona es obligatorio" value="#{personTypeController.campo.personTypeName}" />
+                        
+                        <f:facet name="footer">
+                            <p:commandButton id="btn" value="Crear PersonType" ajax="false" action="#{personTypeController.grabarPersonType()}" />
+                        </f:facet>
+                    </p:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+    
+</html>
