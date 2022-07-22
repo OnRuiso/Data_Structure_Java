@@ -1,7 +1,0 @@
-Resultado Operaciones CASIO 
-
-Resultado Operacion Suma: 4.0 entre 2.0da 6.0
-Resultado Operacion Resta: 4.0 entre 2.0da 2.0
-Resultado Operacion Division: 4.0 entre 2.0da 2.0
-Resultado Operacion Multiplicacion: 4.0 entre 2.0da 8.0
-Resultado Operacion Residuo: 4.0 entre 2.0da 0.0
