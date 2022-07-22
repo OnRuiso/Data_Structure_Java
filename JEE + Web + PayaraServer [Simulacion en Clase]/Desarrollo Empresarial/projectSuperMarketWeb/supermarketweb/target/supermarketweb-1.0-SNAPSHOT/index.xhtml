@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Project Supermarket</title>
+    </h:head>
+
+
+
+    <h:body>
+
+        <ui:composition template="/template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:growl id="messages" sticky="true" />
+                    <p:breadCrumb>
+                        <p:menuitem value="Página de Inicio Supermarket" url="/supermarketwebX/" />
+                    </p:breadCrumb>
+
+                    <p:panelGrid columns="2">
+
+
+                        <p:panelMenu style="width:700px">
+
+                            <p:submenu label="Crear nuevos Datos en Tablas">
+                                <p:menuitem value="Crear Persona" outcome="supermarket/crearPerson" />
+                                <p:menuitem value="Crear Tipo Persona" outcome="supermarket/crearPersonType" />
+                                <p:menuitem value="Crear Precio de Producto" outcome="supermarket/crearPriceProduct" />
+                                <p:menuitem value="Crear Producto" outcome="supermarket/crearProduct" />
+                                <p:menuitem value="Crear Proveedor de Productos" outcome="supermarket/crearProductProvider" />
+                                <p:menuitem value="Crear Tipo Producto" outcome="supermarket/crearProductType" />
+                                <p:menuitem value="Crear Proveedor" outcome="supermarket/crearProvider" />
+                                <p:menuitem value="Crear Impuesto" outcome="supermarket/crearTax" />
+                                <p:menuitem value="Crear Tiquete de Compra" outcome="supermarket/crearTicket" />
+                                <p:menuitem value="Crear Detalle del Tiquete de Compra" outcome="supermarket/crearTicketDetail" />
+                            </p:submenu>
+
+                            <p:submenu label="Ver Elementos en Tablas">
+                                <p:menuitem value="Listar Persona" outcome="supermarket/listarPerson" />
+                                <p:menuitem value="Listar Tipo Persona" outcome="supermarket/listarPersonType" />
+                                <p:menuitem value="Listar Precio de Producto" outcome="supermarket/listarPriceProduct" />
+                                <p:menuitem value="Listar Producto" outcome="supermarket/listarProduct" />
+                                <p:menuitem value="Listar Proveedor de Productos" outcome="supermarket/listarProductProvider" />
+                                <p:menuitem value="Listar Tipo Producto" outcome="supermarket/listarProductType" />
+                                <p:menuitem value="Listar Proveedor" outcome="supermarket/listarProvider" />
+                                <p:menuitem value="Listar Impuesto" outcome="supermarket/listarTax" />
+                                <p:menuitem value="Listar Tiquete de Compra" outcome="supermarket/listarTicket" />
+                                <p:menuitem value="Listar Detalle del Tiquete de Compra" outcome="supermarket/listarTicketDetail" />
+                            </p:submenu>
+
+                        </p:panelMenu>
+
+
+                        <p:graphicImage value="/resources/img/tienda.jpg" />
+
+                    </p:panelGrid>
+                    <!--
+                    <p:panel>
+                        <p:panelGrid columns="5">
+                            <h:link />
+                        </p:panelGrid>
+                    </p:panel>
+                    -->
+                </h:form>
+            </ui:define>
+        </ui:composition>
+        <br/>
+        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+    </h:body>
+</html>

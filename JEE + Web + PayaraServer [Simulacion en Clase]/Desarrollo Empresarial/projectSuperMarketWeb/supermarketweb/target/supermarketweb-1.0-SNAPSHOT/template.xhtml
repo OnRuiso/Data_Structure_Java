@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="/resources/css/default.css"/>
+        <h:outputStylesheet name="/resources/css/cssLayout.css"/>      
+        <title>Template</title>
+    </h:head>
+    
+    <h:body>
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <p:panel>
+                    <p:panelGrid columns="1">
+                        <!--<p:outputLabel value="Supermarcket" />
+                        <p:outputLabel value="Luis Felipe Narváez Gómez - 2312660" />-->
+                        
+                        <section class="textos-header">
+                            <img src="./resources/img/headerImage.JPEG"/>
+                            <h1>SUPERMARKET</h1>
+                            <h2>- Luis Felipe Narváez Gómez_2312660 - </h2>
+                        </section>
+                        
+                    </p:panelGrid>
+                </p:panel>
+
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+    </h:body>
+</html>
+
+
+
+<!--
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Template</title>
+        <link rel="stylesheet" href="./resources/css/styleWTF.css"/>
+    </head>
+
+    <body>
+
+        <header>
+            <div id="top" class="top">
+                <section class="textos-header">
+                    <img src="./resources/img/headerImage.JPEG"/>
+                    <h1>SUPERMARCKET</h1>
+                    <h2>Luis Felipe Narváez Gómez - 2312660</h2>
+                </section>
+
+                <div style="height: 150px; overflow: hidden;" >
+                    <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
+                    <path d="M-1.97,151.47 C73.08,153.45 279.06,149.50 499.72,148.52 L499.15,150.48 L0.85,159.38 Z" style="stroke: none; fill: #08f;">
+                    </path>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </main>
+
+    </body>
+
+</html>
+
+-->
+
